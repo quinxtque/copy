@@ -1,0 +1,279 @@
+Структура - составной тип данных
+struct structname {
+  string name;
+  string pass;
+}
+Для обращения к элементам структуры воспользуемся точкой
+
+main(){
+  namestruct hum;
+  namestruct hum2;
+  hum.name = "Vasya";
+  hum.pass = "123";
+  hum2.name = "Kolya";
+  hum2.pass = "322";
+}
+
+Массивы структур
+Объявление массива структур
+main(){
+  namestruct users[10];
+  users[0].name = "Peter";
+  users[0].pass = "griffit";
+  for (int i = 1; i < 10; i++) {
+    cout << "Введите имя: ";
+    getline(cin, users[i].name);
+    cout << users[i].name << ", введите пароль: ";
+    getline(cin, users[i].pass;
+  }
+}
+
+hum2 = hum // копирование объектов
+Является возможным создавать указатели и ссылки на структуры, значит их можно передавать в параметры функции
+Ссылка на структуру:
+namestr humus;
+namestruct& shum = humus;
+Указатель на структуру:
+namestruct* phum;
+phum = &hum3;
+Если использовать указатель на структуру, доступ к объектом будет использоваться с помощью стрелочки 
+phum -> pass = "andrey dont look in my screen";
+
+Структуры в динамической памяти
+Создать некоторое количество обыкновенных дробей
+
+1 задача в ex1.cpp // + delete[]pch;
+
+Структуры можно передавать по значению, когда копируется целая структура
+По ссылке, когда в функцию помещается адрес структуры => вызов функции происходит быстрее
+
+№2 Нахождение суммы чегото там тирьям тирьямямятмтчшт трям трям трям
+
+struct complex {
+  int Re;
+  int M;
+}
+
+complex addition1(complex z1, complex z2) {
+  complex z;
+  z.Re = z1.Re + z2.Re;
+  z.M = z1.M + z2.M;
+  return M;
+}
+
+void addition2(complex* z, complex* z1, complex* z2) {
+  z -> Re = z1 -> Re + z2 -> Re;
+  z -> M = z1 -> M + z2 -> M;
+  return;
+}
+
+void addition3(complex& z; complex& z1; complex& z2) {
+  z.Re = z1.Re + z2.Re;
+  z.M = z1.M + z2.M;
+  return;
+}
+
+int main() {
+  setlocale(LC_ALL, "Rus");
+
+  complex z, z1, z2;
+
+  z1.Re = 322;
+  z1.M = 228;
+
+  z2.Re = 666;
+  z2.M = 777;
+
+  z = addition(z1, z2);
+
+  addition2(&z, &z1, &z2);
+
+  addition3(z, z1, z2);
+
+  return 0;
+}
+
+Основы ООП
+Существют 3 основных принципа (парадигмы) в ООП:
+1) Инкапсуляция - объединение данных и методов, обрабатывющих эти данные, в сочетании с ограничением доступа из-вне к этим данным и методам;
+2) Наследование - механизм, позволяющий создавать объекты, наследующие свойства родителя, и имеющий возможность давать новые свойства;
+3) Полиморфизм - механизм, позволяющий использовать одно и то же имя длч обозначение сходных по смыслу операций и функций. Он проявляется при перегрузке функций.
+Объект - объединение данных и алгоритмов, обрабатывающих эти данные.
+
+Классы в ООП
+Класс - составной тип данных, в котором объединяются данные и функции их обработки.
+
+class name {
+  private:
+  protected:
+  public:
+}
+
+Public - открытый раздел. Там размещаются поля (переменные) методы доступные из любой точки программы.
+Protected - защищённый разел. Доступ к полям и методам возможен только из собственных методов, а также из классов или методов классов потомок.
+Private - закрытый раздел. Доступ к полям и методам возможен только из собственных методов.
+
+Функции класса могут быть объявлены внутри класса и описаны вне. Такие функции должны определяться при помощи оператора видимости ::
+
+class TComplex {
+  private:
+    int Re;
+    int M; 
+  public:
+    void set();
+    void getprint();
+}
+
+void TComplex::set() {
+  cin >> Re >> M;
+}
+
+void TComplex::getprint() {
+  cout <<< Re << '+' << M << 'i';
+}
+
+int main(){
+  TComplex z;
+  z.set();
+  z.getprint();
+  TComplex z1;
+  z1.set();
+  z.getprint();
+}
+
+z - объект класса
+
+Конструктор класса служит в основном для инициализации класса. Это метод, который вызывается автоматические при создании класса.
+Отличительной особеностью конструктора от функции является отсутствие типа возвращаемого значения, а также его имя должно совпадать с именем класса.
+Конструкторы могут быть перегруженными, т.е. иметь разные количство и тип параметров.
+
+class TComplex {
+  private:
+    int Re;
+    int M;
+  public:
+    TComplex();
+    TComplex(int xx, int yy);
+    void getprint();
+    void setRe(int x);
+    void setM(int y);
+}
+
+TComplex::TComplex() {
+  Re = 1;
+  M = 1;
+}
+
+TComplex::TComplex(int xx, int yy) {
+  Re = xx;
+  M = yy;
+}
+
+void TComplex::setRe(int x) {
+  Re = x;
+}
+
+void TComplex::setM(int y) {
+  M = x;
+}
+
+int main() {
+  TComplex z();
+  int x, y;
+  cin >> x >> y;
+  TComlex z1(x, y);
+  z.setRe(3);
+  z.setM(666);
+}
+
+Деструтор класса необходим в случае, если в классе используются динамические объекты. 
+Он запускается автоматически при удалении класса и обозначается в классе:
+~className();
+
+class point {
+  protected:
+    int x;
+    int y;  
+  public:
+    point() {
+      x = 0;
+      y = 0;
+    }
+    int& getX() return x;
+    int& getY() return y;
+}
+
+class screen:public point {
+  int h;
+  int w;
+  public:
+    int& getH() return h;
+    int& getW() return w;
+    void show() {
+      cout << h << ' ' << w << ' ' << cout << x << ' ' << y;
+    }
+    .
+    .
+}
+
+Пример:
+class Animal {
+  protected:
+    string name;
+  public:
+    void setname(string n) {
+      name = n;
+    }
+    void voise() {
+      cout << "Голос";
+    }
+}
+
+class Dog:public Animal {
+  public:
+    void voise() {
+      cout << "ГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВГАВ";
+    }
+}
+
+class Cat:public Animal {
+  public:
+    void voise() {
+      cout << "MEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOW";
+    }
+}
+
+int main() {
+  Dog sharik;
+  string name;
+  cin >> name;
+  sharik.setname(name);
+  sharik.voise();
+  Cat matroskin;
+  matroskin.setname("Андрей");
+  matroskin.voise();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
